@@ -1,6 +1,8 @@
 package com.example.alejandroruiz.myfirstapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -38,7 +40,15 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.content);
         layout.addView(textView);
+
+        /*SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        sharedPref.getString("Primero", message);
+        TextView textView1 = new TextView(this);
+        textView1.setText(message);*/
+
     }
+
+
 
 
 
