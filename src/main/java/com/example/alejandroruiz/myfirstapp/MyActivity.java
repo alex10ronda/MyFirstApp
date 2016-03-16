@@ -1,6 +1,7 @@
 package com.example.alejandroruiz.myfirstapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -25,7 +27,7 @@ import android.widget.TextView;
 import java.net.URI;
 import java.util.List;
 
-public class MyActivity extends AppCompatActivity {
+public class MyActivity extends AppCompatActivity implements View.OnClickListener {
 
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     static final int PICK_CONTANCT_REQUEST = 1;
@@ -46,6 +48,11 @@ public class MyActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //Reproducir sonido
+        Button btn =(Button) findViewById(R.id.send);
+        btn.setOnClickListener(this);
+
 
 
        /* SharedPreferences sharedPref = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
@@ -80,11 +87,13 @@ public class MyActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view){
+
+        /*//Envia el dato a otro activity
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE,message);
-        startActivityForResult(intent, OBTAIN_MESSAGE);
+        startActivityForResult(intent, OBTAIN_MESSAGE);*/
 
         //Redireccionar al mapa
        /* Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
@@ -109,6 +118,7 @@ public class MyActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
 
+        //Recupera de otro activity
         if(requestCode==OBTAIN_MESSAGE){
             if(resultCode == RESULT_OK ){
                 Log.d("Aqui","Aqui");
@@ -159,6 +169,9 @@ public class MyActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View src) {
+        startService(new Intent(this, MyService.class));
 
-
+    }
 }
