@@ -49,9 +49,9 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        //Reproducir sonido
+        /*//Reproducir sonido
         Button btn =(Button) findViewById(R.id.send);
-        btn.setOnClickListener(this);
+        btn.setOnClickListener(this);*/
 
 
 
@@ -94,6 +94,9 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE,message);
         startActivityForResult(intent, OBTAIN_MESSAGE);*/
+        Intent intent = new Intent(this, HttpExampleActivity.class);
+        startActivity(intent);
+
 
         //Redireccionar al mapa
        /* Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
